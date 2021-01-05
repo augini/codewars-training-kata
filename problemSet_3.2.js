@@ -15,5 +15,14 @@ const duplicateEncode = (word) => {
 };
 
 //Problem number two
+const moveZeros = (arr) => {
+  arr.forEach((e, index) => {
+    if (e === 0) {
+      arr.push(0);
+      arr.splice(arr.indexOf(e), 1);
+    }
+  });
+  return arr;
+};
 
 console.log(duplicateEncode("Success"));
