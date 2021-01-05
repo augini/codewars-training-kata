@@ -16,6 +16,7 @@ const DNAStrand = (dna) => {
     C: "G",
     G: "C",
   };
+
   return dna
     .split("")
     .map((a) => complement[a])
@@ -30,4 +31,15 @@ const validatePIN = (pin) => {
     : false;
 };
 
-console.log(validatePIN("31a2"));
+//sorting the minimum number
+const handleSum = (input) => {
+  input.sort((a, b) => a - b);
+
+  return input[0] + input[1];
+};
+
+//count the vowels
+const countVowel = (string) => {
+  const vowels = ["a", "e", "i", "o", "u"];
+  return string.split("").filter((letter) => vowels.includes(letter)).length;
+};

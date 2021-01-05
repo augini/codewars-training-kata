@@ -1,12 +1,42 @@
-//sorting the minimum number
-const handleSum = (input) => {
-  input.sort((a, b) => a - b);
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~additive Persistence~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-  return input[0] + input[1];
+const additivePersistence = (number) => {
+  let digits = Array.from(String(number), Number);
+  let counter = 0;
+
+  while (digits.length > 1) {
+    digits = Array.from(
+      String(digits.reduce((sum, digit) => sum + digit)),
+      Number
+    );
+    counter++;
+  }
+
+  return `${counter} iterations needed`;
 };
 
-//count the vowels
-const countVowel = (string) => {
-  const vowels = ["a", "e", "i", "o", "u"];
-  return string.split("").filter((letter) => vowels.includes(letter)).length;
+const balanced = (input) => {
+  let firstHalf = input.slice(0, Math.floor(input.length / 2));
+  let secondHalf = input.slice(Math.ceil(input.length / 2));
+  let sum1,
+    sum2 = 0;
+
+  [...firstHalf].forEach(
+    (char, index) => (sum1 += firstHalf.charCodeAt(index) - 96)
+  );
+
+  [...secondHalf].forEach(
+    (char, index) => (sum2 += secondHalf.charCodeAt(index) - 96)
+  );
+  return sum1 === sum2 ? true : false;
 };
+
+const name = [2, 3, 4, 5];
+
+for (let i = 0; i < name.length; i++) {
+  name[i] = name[i] * 2;
+}
+
+name.forEach((element) => {
+  element = element * 2;
+});
