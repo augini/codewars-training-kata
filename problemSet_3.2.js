@@ -27,15 +27,25 @@ const moveZeros = (arr) => {
 
 //Problem test
 const incrementString = (strng) => {
-  let word = strng.split("").filter((e) => isNaN(e));
-  let number = strng.split("").filter((e) => !isNaN(e));
-
+  let word = strng.split("").filter((e) => isNaN(e) || e === "0");
+  let number = strng.split("").filter((e) => !isNaN(e) && e !== "0");
   if (number.length !== 0) {
     let numberValue = parseInt(number.join("")) + 1;
-    return word.join("").concat(numberValue);
+
+    if (numberValue % 10 === 0 && word[word.length - 1] === "0") {
+      word = word.slice(0, word.length - 1);
+    }
+    return word.join("").concat(numberValue.toString());
   } else {
-    return word.join("").concat("1");
+    if (word[word.length - 1] === "0") {
+      return word
+        .slice(0, word.length - 1)
+        .join("")
+        .concat("1");
+    } else {
+      return word.join("").concat("1");
+    }
   }
 };
 
-console.log(incrementString("foobar099"));
+console.log(incrementString("foobar001"));
