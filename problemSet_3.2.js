@@ -25,4 +25,17 @@ const moveZeros = (arr) => {
   return arr;
 };
 
-console.log(duplicateEncode("Success"));
+//Problem test
+const incrementString = (strng) => {
+  let word = strng.split("").filter((e) => isNaN(e));
+  let number = strng.split("").filter((e) => !isNaN(e));
+
+  if (number.length !== 0) {
+    let numberValue = parseInt(number.join("")) + 1;
+    return word.join("").concat(numberValue);
+  } else {
+    return word.join("").concat("1");
+  }
+};
+
+console.log(incrementString("foobar099"));
